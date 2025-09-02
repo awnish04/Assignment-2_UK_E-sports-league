@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Login - UK E-Sports League</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="style/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+
+  <script src="nav.js"></script>
+  <section class="section">
+    <div class="container">
+      <div class="login-container">
+        <div class="form-container">
+          <div class="text-center mb-4">
+            <h1>ADMIN LOGIN</h1>
+            <p>Access the administrative area of UK E-Sports League</p>
+          </div>
+
+          <form action="login.php" method="POST" novalidate>
+            <div class="form-group">
+              <label for="username" class="form-label">
+                <span>👤</span> USERNAME
+              </label>
+              <input required class="form-control bg-white text-dark" type="text" name="username" id="username"
+                value="admin" />
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">
+                <span>🔒</span> PASSWORD
+              </label>
+              <div class="password-input-container">
+                <input required class="form-control bg-white text-dark" type="password" name="password" id="password"
+                  value="password123" />
+                <button type="button" class="password-toggle" id="passwordToggle">
+                  👁️
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                ">
+              <span>🚀</span>
+              LOGIN
+            </button>
+          </form>
+
+          <div class="demo-credentials mt-4 text-center">
+            <small>
+              Demo credentials are pre-filled<br />
+              Username: admin | Password: password123
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Toggle password visibility
+    document
+      .getElementById("passwordToggle")
+      .addEventListener("click", function () {
+        const passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          this.textContent = "🔒";
+        } else {
+          passwordInput.type = "password";
+          this.textContent = "👁️";
+        }
+      });
+
+    // Form validation
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+
+      if (!username.value.trim() || !password.value.trim()) {
+        e.preventDefault();
+        alert("Please complete all fields");
+        return;
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <script src="nav.js"></script>
+    <section class="section">
+        <div class="container">
+            <div class="form-container">
+                <div class="text-center mb-4">
+                    <h2 style="color: var(--white);
+                  margin-bottom: 1rem;
+                  font-family: 'Orbitron', monospace;
+                ">CREATE YOUR ACCOUNT</h2>
+                    <p>Fill in your details to unlock member benefits</p>
+                </div>
+
+                <!-- Registration form -->
+                <form action="register.php" method="POST" id="regForm" novalidate>
+                    <div class="form-group">
+                        <label for="firstname" class="form-label"><span>👤</span> FIRST NAME</label>
+                        <input type="text" id="firstname" name="firstname" class="form-control bg-white text-dark"
+                            placeholder="Enter your first name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surname" class="form-label"><span>👤</span> SURNAME</label>
+                        <input type="text" id="surname" name="surname" class="form-control bg-white text-dark"
+                            placeholder="Enter your surname">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label"><span>✉️</span> EMAIL ADDRESS</label>
+                        <input type="email" id="email" name="email" class="form-control bg-white text-dark"
+                            placeholder="Enter your email address">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" value="1">
+                        <label htmlFor="terms" class="form-label">I accept the terms and conditions</label>
+                    </div>
+
+
+
+
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><span>✓</span>
+                            REGISTER</button>
+                    </div>
+
+
+                </form>
+
+                <div class=" form-divider">
+                    <span>OR</span>
+                </div>
+
+                <div>
+                    <p style="text-align: center; margin-bottom: 1rem;">
+                        Already have an account?
+                    </p>
+                    <a href="admin_login.html" class="btn btn-secondary"
+                        style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span>←</span>
+                        BACK TO ADMIN LOGIN
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3 style="color: var(--white); margin: 1rem 0; text-align: center;">
+                        MEMBER BENEFITS
+                    </h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <span>🏆</span>
+                            <span>Tournament Dashboard</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>🎯</span>
+                            <span>Performance Tracking</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>👥</span>
+                            <span>Team Management</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>🎁</span>
+                            <span>Exclusive Merchandise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>
