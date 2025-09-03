@@ -8,33 +8,33 @@
 <body>
 <?php
 session_start();
+
+// Redirect if admin not logged in
 if (empty($_SESSION['admin_logged_in'])) {
     header("Location: admin_login.html");
     exit;
 }
+
 include 'dbconnect.php';
-
-// Include the sidebar
 include 'admin_sidebar.php';
-
 
 try {
     $dsn = "mysql:host=$servername;port=$port;dbname=$database;charset=utf8mb4";
-    $conn = new PDO($dsn, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $username, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Update section
-        $id = intval($_POST['id'] ?? 0);
-        $kills = trim($_POST['kills'] ?? '');
-        $deaths = trim($_POST['deaths'] ?? '');
 
-        if ($id <= 0) {
-            throw new Exception("Invalid participant id.");
+        $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        $kills = filter_input(INPUT_POST, 'kills', FILTER_SANITIZE_NUMBER_INT);
+        $deaths = filter_input(INPUT_POST, 'deaths', FILTER_SANITIZE_NUMBER_INT);
+
+        if (!$id) {
+            throw new Exception("Invalid participant ID.");
         }
 
-        // validation: numeric kills/deaths
-        if ($kills === '' || $deaths === '' || !is_numeric($kills) || !is_numeric($deaths)) {
+        if ($kills === false || $deaths === false) {
             echo "<div class='card'><div class='card-body'>Kills and deaths must be numeric. <a href='view_participants_edit_delete.php' class='btn btn-primary'>Back</a></div></div>";
             exit;
         }
@@ -46,7 +46,7 @@ try {
             ':id' => $id
         ]);
 
-        // Success message with card design
+        // Success frontend remains intact
         echo '
         <main class="main-content">
             <div class="header">
@@ -69,10 +69,10 @@ try {
                 </div>
             </div>
         </main>';
-        
         exit;
+
     } else {
-        // For GET requests, just show a simple message
+        // GET request info page
         echo '
         <main class="main-content">
             <div class="header">
@@ -102,7 +102,7 @@ try {
                 <h2>Error</h2>
             </div>
             <div class="card-body">
-                <div class="alert alert-danger">Database error: ' . htmlspecialchars($e->getMessage()) . '</div>
+                <div class="alert alert-danger">Database error: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES) . '</div>
                 <a href="view_participants_edit_delete.php" class="btn btn-primary">Back to Participants List</a>
             </div>
         </div>
@@ -115,14 +115,12 @@ try {
                 <h2>Error</h2>
             </div>
             <div class="card-body">
-                <div class="alert alert-danger">Error: ' . htmlspecialchars($e->getMessage()) . '</div>
+                <div class="alert alert-danger">Error: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES) . '</div>
                 <a href="view_participants_edit_delete.php" class="btn btn-primary">Back to Participants List</a>
             </div>
         </div>
     </main>';
 }
-
-
 ?>
 </body>
 </html>
