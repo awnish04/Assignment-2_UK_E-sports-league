@@ -51,15 +51,19 @@
   --sidebar-width: 250px;
 }
 
-body {
+body,
+html {
   font-family: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--dark);
-  overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -122,8 +126,8 @@ body::before {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 100%;
+  /* margin: auto; */
 }
 
 .main-nav-brand {
@@ -189,6 +193,12 @@ body::before {
 
 .main-nav-link.active::before {
   width: 100%;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 /* Mobile Menu Button */
@@ -315,6 +325,7 @@ body::before {
 .hero {
   position: relative;
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,13 +350,13 @@ body::before {
   position: relative;
   z-index: 3;
   text-align: center;
-  max-width: 1200px;
+  max-width: 100%;
   padding: 10rem 1rem;
 }
 
 .hero-title {
   font-family: "Orbitron", monospace;
-  font-size: clamp(2rem, 7vw, 5rem);
+  font-size: clamp(1rem, 7vw, 5rem);
   font-weight: 900;
   background: var(--gradient-secondary);
   -webkit-background-clip: text;
@@ -551,7 +562,8 @@ body::before {
 
 /* Container */
 .container {
-  max-width: 1400px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -559,7 +571,9 @@ body::before {
 /* Section */
 .section {
   padding: 10rem 0;
-  position: relative;
+  /* position: relative; */
+  width: 100%;
+  max-width: 100%;
 }
 
 .section-dark {
@@ -594,7 +608,7 @@ body::before {
 
 .section-title {
   font-family: "Orbitron", monospace;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 5vw, 4rem);
   font-weight: 900;
   text-align: center;
   margin-bottom: 1rem;
@@ -823,7 +837,7 @@ body::before {
 
 .tournament-title {
   font-family: "Orbitron", monospace;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--neon-cyan);
   margin-bottom: 0.5rem;
@@ -1075,7 +1089,7 @@ body::before {
 
 .prize-title {
   font-family: "Orbitron", monospace;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 1rem;
@@ -1231,7 +1245,7 @@ body::before {
   margin: 0;
   font-weight: 500;
   color: var(--neon-cyan);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-transform: none;
   cursor: pointer;
 }
@@ -2546,6 +2560,9 @@ body::before {
   .main-nav-links.active {
     display: flex;
   }
+  .nav-buttons {
+    display: flex;
+  }
 
   .mobile-menu-btn {
     display: block;
@@ -2589,13 +2606,23 @@ body::before {
     margin-left: 70px;
   }
 
-  .hero-title {
-    font-size: 3rem;
+  .hero-content {
+    padding: 8rem 1rem;
   }
 
   .hero-cta {
     flex-direction: column;
     align-items: center;
+  }
+  .hero-description {
+    font-size: 1rem;
+  }
+  .feature-card {
+    padding: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
   }
 
   .stats-grid {
@@ -2609,7 +2636,7 @@ body::before {
     font-size: 2rem;
   }
   .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
 
   .card-header h2 {
@@ -2620,6 +2647,9 @@ body::before {
   }
   .card-body h3 {
     font-size: 1.2rem;
+  }
+  .prize-card {
+    padding: 1rem;
   }
 
   .tournament-grid,
@@ -2638,8 +2668,8 @@ body::before {
   }
 
   .form-container {
-    padding: 2rem;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 3rem 0;
   }
   .form-control {
     padding: 0.7rem;
@@ -2650,7 +2680,7 @@ body::before {
     height: 350px;
   }
   .carousel-title {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   .carousel-description {
@@ -2658,9 +2688,7 @@ body::before {
   }
 
   .carousel-controls {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
+    display: none;
   }
 
   .carousel-prev {
@@ -2674,10 +2702,6 @@ body::before {
   .carousel-indicator {
     width: 8px;
     height: 8px;
-  }
-
-  .benefits-grid {
-    grid-template-columns: 1fr;
   }
 
   .category-header {
@@ -2736,6 +2760,10 @@ body::before {
     width: 100%;
     justify-content: center;
   }
+  .specialty-tag {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.6rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -2778,4 +2806,8 @@ body::before {
   .main-nav-brand {
     font-size: 1rem;
   }
+}
+
+.achievements-list ul {
+  padding-left: 0rem !important;
 }
