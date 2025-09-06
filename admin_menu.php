@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Edit Participant</title>
-  <link href="style/style.css" rel="stylesheet">
-</head>
-<body>
 <?php
 session_start();
 if (empty($_SESSION['admin_logged_in'])) {
@@ -58,9 +50,17 @@ try {
 } catch (PDOException $e) {
     // Log or handle error as needed. Here we keep default 0 values.
 }
-
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+  <title>Edit Participant</title>
+  <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
 
     <!-- Main Content -->
     <main class="main-content">

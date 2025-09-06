@@ -91,7 +91,7 @@ function escape($str) {
 
                     <div class="d-flex justify-content-between mt-3">
                         <a href="view_participants_edit_delete.php" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Update Player</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

@@ -28,33 +28,34 @@
           <form action="login.php" method="POST" novalidate>
             <div class="form-group">
               <label for="username" class="form-label">
-                <span>👤</span> USERNAME
+                <i class="fas fa-user"></i> USERNAME
               </label>
               <input required class="form-control bg-white text-dark" type="text" name="username" id="username"
-                value="admin" />
+                value="" />
             </div>
 
             <div class="form-group">
               <label for="password" class="form-label">
-                <span>🔒</span> PASSWORD
+                <i class="fas fa-lock"></i> PASSWORD
               </label>
               <div class="password-input-container">
                 <input required class="form-control bg-white text-dark" type="password" name="password" id="password"
-                  value="password123" />
+                  value="" />
                 <button type="button" class="password-toggle" id="passwordToggle">
                   👁️
                 </button>
               </div>
             </div>
+            <!-- Google reCAPTCHA -->
 
-            <button type="submit" class="btn btn-primary" style="
-                  width: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 8px;
-                ">
-              <span>🚀</span>
+
+            <div class="g-recaptcha form-group" data-sitekey="6LdxAcArAAAAAOdawkn9_MY0snLzsGKb7zd7AiEE"
+              style="z-index:9999;position:relative;">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 justify-content-center">
+              <i class="fas fa-rocket"></i>
               LOGIN
             </button>
           </form>
@@ -97,6 +98,8 @@
       }
     });
   </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </body>
 
 </html>

@@ -1,7 +1,4 @@
-<?php
-// admin_sidebar.php
-// This file contains the sidebar navigation
-?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Admin Sidebar -->
 <aside class="admin-sidebar">
     <div class="admin-sidebar-header">
